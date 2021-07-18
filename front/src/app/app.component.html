@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-10">
+    <input class="form-control" placeholder="Write page url here" [(ngModel)]="newPageUrl">
+  </div>
+  <div class="col-2">
+    <button appDebounceClick (debounceClick)="createPage()" class="btn btn-success float-end">Check</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Page URL</th>
+        <th scope="col">Title</th>
+        <th scope="col">Html version</th>
+        <th scope="col">Headings count</th>
+        <th scope="col">Internal links count</th>
+        <th scope="col">External links count</th>
+        <th scope="col">Login form exists</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let page of pages">
+        <th scope="row">{{page.URL}}</th>
+        <td>{{page.Title}}</td>
+        <td>{{page.HTMLVersion}}</td>
+        <td>{{page.HeadingsCount}}</td>
+        <td>{{page.internalLinksCount}}</td>
+        <td>{{page.externalLinksCount}}</td>
+        <td>{{page.hasLoginForm | boolean}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
