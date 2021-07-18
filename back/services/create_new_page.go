@@ -17,7 +17,7 @@ func CreateNewPage(url string) (*repositories.Page, error) {
 		return nil, err
 	}
 
-	pageBuilder.SetTitle().SetHeadingCount().SetLinksCount()
+	pageBuilder.SetTitle().SetHtmlVersion().SetHeadingCount().SetLinksCount().SetLoginForm()
 
 	page := pageBuilder.GetPage()
 

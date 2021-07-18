@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {PageService} from "./services/page.service";
 import {PageModel} from "./models/page.model";
 
+import {isUri, isHttpsUri, isHttpUri, isWebUri} from 'valid-url';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,6 +11,8 @@ import {PageModel} from "./models/page.model";
 })
 export class AppComponent implements OnInit {
   pages: PageModel[] = [];
+
+  blocked = true;
 
   lastAdded!: PageModel;
 
@@ -20,6 +24,17 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.fetchPages();
+  }
+
+  onModelChange(): void {
+    if (this.newPageUrl.startsWith("https://") || this.newPageUrl.startsWith("http://")) {
+
+      this.blocked = !isUri(this.newPageUrl);
+
+      return;
+    }
+
+    this.blocked = true;
   }
 
   async fetchPages(): Promise<void> {

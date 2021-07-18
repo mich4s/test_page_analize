@@ -1,9 +1,17 @@
 <div class="row">
   <div class="col-10">
-    <input class="form-control" placeholder="Write page url here" [(ngModel)]="newPageUrl">
+    <input class="form-control" placeholder="https://www.reddit.com" [(ngModel)]="newPageUrl" (ngModelChange)="onModelChange()">
   </div>
   <div class="col-2">
-    <button appDebounceClick (debounceClick)="createPage()" class="btn btn-success float-end">Check</button>
+    <button [disabled]="blocked" appDebounceClick (debounceClick)="createPage()" class="btn btn-success float-end">Check</button>
+  </div>
+</div>
+
+<div class="row" *ngIf="blocked">
+  <div class="col-12">
+    <div class="alert alert-danger" role="alert">
+      Domain must starts with "https://" or "http://"
+    </div>
   </div>
 </div>
 
