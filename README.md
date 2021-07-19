@@ -38,6 +38,10 @@ Hit api with POST: localhost:3000/pages
 Or GET: localhost:3000/pages to download list of pages
 
 
-#### Container version
+### Container version
 
 If you don't want to manage local deployment manually you can use ``docker compose up`` and frontend application with be running on localhost:4000
+
+
+## Summary
+I didn't manage to analize 'inaccessible links', because I didn't had idea how to resolve this. Application works synchronous, but in future improvements there would be good option to make page parsing asynchronous.
